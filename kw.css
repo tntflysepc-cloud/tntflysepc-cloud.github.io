@@ -1,0 +1,9 @@
+/* 키워드 페이지 추가 스타일 */
+a.logo{text-decoration:none}
+.bc{margin:18px 0 0;font-size:13px;color:var(--mute)}.bc a{color:var(--mute);text-decoration:none}.bc a:hover{color:var(--brand)}.bc span{margin:0 4px}
+.hero .lead{margin-bottom:22px}
+main p{max-width:760px}
+.ph .l1{margin:0 0 6px;color:var(--ink);font-weight:700;font-size:16px}.ph .rom{font-size:13px;color:var(--brand);margin:0 0 6px}
+.kw{display:flex;flex-wrap:wrap;gap:8px;max-width:none}.kw span{border:2px solid var(--ink);border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px;background:var(--card)}
+.tips .card h3{color:var(--brand)}
+.faq{border-bottom:1px solid var(--line);padding:14px 0}.faq h3{margin:0 0 6px;font-size:17px}.faq p{margin:0;color:var(--mute)}
