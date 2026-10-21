@@ -172,7 +172,7 @@ header .logo{white-space:nowrap}
 @media(max-width:400px){header .logo{font-size:14px}header .logo::before{width:24px;height:24px;margin-right:5px}header nav a{padding:6px 3px;font-size:11.5px}}
 
 /* 메인 슬라이드 히어로 */
-.hs{position:relative;height:clamp(520px,82vh,720px);background:#0f0f12;color:#fff;overflow:hidden}
+.hs{position:relative;height:clamp(600px,88vh,760px);background:#0f0f12;color:#fff;overflow:hidden}
 .hs-track{position:absolute;inset:0}
 .hs-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .9s ease,visibility 0s linear .9s}
 .hs-slide.on{opacity:1;visibility:visible;transition:opacity .9s ease}
@@ -180,11 +180,11 @@ header .logo{white-space:nowrap}
 .hs-slide.on .hs-bg{transform:scale(1)}
 .hs-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,14,.82) 0%,rgba(10,10,14,.55) 55%,rgba(10,10,14,.25) 100%),linear-gradient(0deg,rgba(10,10,14,.7),transparent 45%)}
 .hs .wrap{max-width:1360px;padding:0 28px}.hs-in h1,.hs-in p{word-break:keep-all}
-.hs-in{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;padding-bottom:150px}
+.hs-in{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;padding-bottom:170px}
 .hs-tag{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.14em;color:#d4ff3f;border:1.5px solid rgba(212,255,63,.7);border-radius:999px;padding:5px 14px;margin-bottom:6px;opacity:0;transform:translateY(16px)}
-.hs-in h1{color:#fff;margin:14px 0 14px;font-size:clamp(34px,6.2vw,64px);line-height:1.25;letter-spacing:-.03em;opacity:0;transform:translateY(22px)}
+.hs-in h1{color:#fff;margin:14px 0 14px;font-size:clamp(28px,4.8vw,52px);line-height:1.3;letter-spacing:-.03em;opacity:0;transform:translateY(22px)}
 .hs-in h1 em{font-style:normal;display:inline-block;background:#d4ff3f;color:#0f0f12;padding:0 .14em;border-radius:.2em;line-height:1.2}
-.hs-in p{color:rgba(255,255,255,.88);font-size:clamp(16px,2.2vw,20px);max-width:520px;margin:0;opacity:0;transform:translateY(22px)}
+.hs-in p{color:rgba(255,255,255,.88);font-size:clamp(16px,2.2vw,20px);max-width:640px;margin:0;opacity:0;transform:translateY(22px)}
 .hs-slide.on .hs-tag,.hs-slide.on h1,.hs-slide.on p{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
 .hs-slide.on h1{transition-delay:.12s}.hs-slide.on p{transition-delay:.24s}
 .hs-ui{position:absolute;left:0;right:0;bottom:0;z-index:3;padding-bottom:26px;display:flex;flex-direction:column;gap:22px;align-items:flex-start}
@@ -204,7 +204,7 @@ header .logo{white-space:nowrap}
 .hs-arrows{display:flex;gap:8px}
 .hs-ar{all:unset;box-sizing:border-box;cursor:pointer;width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(255,255,255,.6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;transition:background .25s,color .25s,transform .25s}
 .hs-ar:hover,.hs-ar:focus-visible{background:#d4ff3f;color:#0f0f12;border-color:#d4ff3f;transform:translateY(-1px)}
-@media(max-width:640px){.hs .wrap{padding:0 20px}.hs{height:clamp(500px,86vh,640px)}.hs-in{padding-bottom:170px}.hs-arrows{display:none}.hs-dot{width:38px}.hs-ui{padding-bottom:20px;gap:18px}}
+@media(max-width:640px){.hs .wrap{padding:0 20px}.hs{height:clamp(620px,90vh,720px)}.hs-in{padding-bottom:170px}.hs-arrows{display:none}.hs-dot{width:38px}.hs-ui{padding-bottom:20px;gap:18px}}
 @media(prefers-reduced-motion:reduce){.hs-bg{transition:none;transform:none}.hs-slide,.hs-slide.on{transition:none}.hs-dot.on i::after{animation:none;transform:scaleX(1)}}
 </style>
 </head>
@@ -216,7 +216,7 @@ header .logo{white-space:nowrap}
 
 <main id="home">
 <section class="hs" aria-roledescription="carousel" aria-label="수업 소개">
-<div class="hs-track"><div class="hs-slide on" aria-hidden="false"><div class="hs-bg" style="background-image:url(https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1920&q=80)"></div><div class="wrap hs-in"><span class="hs-tag">OPIc · JLPT · HSK</span><h1>점수는 <em>말하기</em>에서<br>갈려요</h1><p>오픽, JLPT, HSK. 입으로 연습한 만큼 오르거든요.</p></div></div><div class="hs-slide" aria-hidden="true"><div class="hs-bg" style="background-image:url(https://images.unsplash.com/photo-1503365194569-df4e1d04cec1?auto=format&fit=crop&w=1920&q=80)"></div><div class="wrap hs-in"><span class="hs-tag">TRAVEL</span><h1><em>통역 앱 없이</em><br>떠나는 다음 여행</h1><p>주문도 길 묻기도 내 입으로 해결해요.</p></div></div><div class="hs-slide" aria-hidden="true"><div class="hs-bg" style="background-image:url(https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1920&q=80)"></div><div class="wrap hs-in"><span class="hs-tag">ENGLISH · 日本語 · 中文</span><h1>알긴 아는데,<br><em>말이 안 나오세요?</em></h1><p>얼굴 보고 몇 번만 말해 보면 달라져요.</p></div></div><div class="hs-slide" aria-hidden="true"><div class="hs-bg" style="background-image:url(https://images.unsplash.com/photo-1758691737182-d42aefd6dee8?auto=format&fit=crop&w=1920&q=80)"></div><div class="wrap hs-in"><span class="hs-tag">BUSINESS</span><h1>영어 메일 앞에서 멈칫하던 날들,<br><em>이제 안녕</em></h1><p>회의, 메일, 전화까지 업무에 바로 써요.</p></div></div></div>
+<div class="hs-track"><div class="hs-slide on" aria-hidden="false"><div class="hs-bg" style="background-image:url(https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1920&q=80)"></div><div class="wrap hs-in"><span class="hs-tag">OPIc · JLPT · HSK</span><h1>시험 점수는 결국<br><em>말해 본 횟수</em>에서 갈려요</h1><p>오픽, JLPT, HSK 말하기 파트는 아는 것보다 입에 붙은 것이 점수가 돼요. 시험 유형에 맞춰 답변을 같이 만들고, 바로 소리 내어 말해 봅니다.</p></div></div><div class="hs-slide" aria-hidden="true"><div class="hs-bg" style="background-image:url(https://images.unsplash.com/photo-1503365194569-df4e1d04cec1?auto=format&fit=crop&w=1920&q=80)"></div><div class="wrap hs-in"><span class="hs-tag">TRAVEL</span><h1>다음 여행에서는<br><em>통역 앱 대신 내 목소리</em>로<br>주문하고 싶다면</h1><p>식당 주문, 길 묻기, 숙소 체크인처럼 여행에서 꼭 필요한 말만 골라 연습해요. 현지에서 한마디가 통하는 순간 여행이 훨씬 즐거워져요.</p></div></div><div class="hs-slide" aria-hidden="true"><div class="hs-bg" style="background-image:url(https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1920&q=80)"></div><div class="wrap hs-in"><span class="hs-tag">ENGLISH · 日本語 · 中文</span><h1>문장은 다 아는데<br>막상 입을 떼면<br><em>말이 안 나온 적</em> 있으세요?</h1><p>읽고 듣는 건 되는데 말하기만 막힌다면 공부량보다 연습 방식의 문제일 수 있어요. 얼굴을 보며 짧게 자주 말하다 보면 입이 먼저 기억합니다.</p></div></div><div class="hs-slide" aria-hidden="true"><div class="hs-bg" style="background-image:url(https://images.unsplash.com/photo-1758691737182-d42aefd6dee8?auto=format&fit=crop&w=1920&q=80)"></div><div class="wrap hs-in"><span class="hs-tag">BUSINESS</span><h1>메일 한 줄 쓰는 데 한참 걸리던 날들,<br><em>이제는 옛날 얘기</em>가 됩니다</h1><p>회의 발언, 이메일, 전화 응대까지 실제 업무 상황으로 연습해요. 내일 바로 쓸 수 있는 표현부터 하나씩 채워 갑니다.</p></div></div></div>
 <div class="wrap hs-ui"><div class="hs-cta"><a class="btn" href="#apply">무료 상담 신청</a><a class="btn ghost" href="/reviews/">수업후기 보기</a></div>
 <div class="hs-nav"><div class="hs-dots"><button type="button" class="hs-dot on" data-i="0"><i></i></button><button type="button" class="hs-dot" data-i="1"><i></i></button><button type="button" class="hs-dot" data-i="2"><i></i></button><button type="button" class="hs-dot" data-i="3"><i></i></button></div><div class="hs-arrows"><button type="button" class="hs-ar" data-d="-1" aria-label="이전">&#8592;</button><button type="button" class="hs-ar" data-d="1" aria-label="다음">&#8594;</button></div></div></div>
 </section>
