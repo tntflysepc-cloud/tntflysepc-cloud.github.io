@@ -163,8 +163,12 @@ background:linear-gradient(var(--accent),var(--accent)) no-repeat left center/0%
 transition:background-size .38s cubic-bezier(.22,1,.36,1),color .2s,transform .25s cubic-bezier(.22,1,.36,1)}
 header nav a:hover,header nav a:focus-visible{background-size:100% 100%;color:#0f0f12;transform:translateY(-1px);outline:none}
 header nav a[aria-current=page]{box-shadow:inset 0 -3px 0 var(--brand)}
+header .wrap{max-width:1360px;padding:0 28px}
+header .logo{display:inline-flex;align-items:center;gap:9px}
+header .logo::before{content:"T";display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#7a5cff,#5b3cff);color:#fff;font-weight:900;font-size:19px;line-height:1;box-shadow:0 2px 6px rgba(91,60,255,.35),inset 0 1px 0 rgba(255,255,255,.25)}
 header .logo{white-space:nowrap}
-@media(max-width:640px){header .wrap{display:flex;justify-content:space-between;gap:6px}header .wrap{padding:0 12px}header .logo{font-size:16px}header .wrap>nav{gap:0}header nav a{padding:6px 5px;font-size:12px}header nav a[href$="#apply"]{display:none}}
+@media(max-width:640px){header .wrap{display:flex;justify-content:space-between;gap:6px}header .wrap{padding:0 12px}header .logo{font-size:16px;gap:6px}header .logo::before{width:26px;height:26px;font-size:16px;border-radius:7px}header .wrap>nav{gap:0}header nav a{padding:6px 5px;font-size:12px}header nav a[href$="#apply"]{display:none}}
+@media(max-width:400px){header .logo{font-size:14px;gap:5px}header .logo::before{width:23px;height:23px;font-size:14px}header nav a{padding:6px 3px;font-size:11.5px}}
 </style>
 </head>
 <body>
