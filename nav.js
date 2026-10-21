@@ -1,8 +1,8 @@
 (function(){
 var D={
- en:[['회화 과정','여행 · 비즈니스 · 화상영어','/#/en','chat'],['자격증 과정','토익스피킹 · 오픽 · 아이엘츠','/en/toeic-speaking/','cert'],['내신 대비','국제학교 입학 · 적응','/en/intl-school/','school'],['수업 문의','무료 상담으로 수업 방식 확인','/#apply','ask']],
- jp:[['회화 과정','여행 · 비즈니스 · 일드 · 애니','/#/jp','chat'],['자격증 과정','JLPT · JPT · SJPT · 일본어 오픽','/jp/jlpt-n3/','cert'],['내신 대비','국제학교 입학 · 적응','/jp/intl-school/','school'],['수업 문의','무료 상담으로 수업 방식 확인','/#apply','ask']],
- cn:[['회화 과정','여행 · 비즈니스 · 중드','/#/cn','chat'],['자격증 과정','HSK · HSKK · TSC · 중국어 오픽','/cn/hsk-3/','cert'],['내신 대비','국제학교 입학 · 적응','/cn/intl-school/','school'],['수업 문의','무료 상담으로 수업 방식 확인','/#apply','ask']]
+ en:[['회화 과정','여행 · 비즈니스 · 화상영어','/#/en','chat'],['자격증 과정','토익스피킹 · 오픽 · 아이엘츠','/en/toeic-speaking/','cert'],['내신 대비','국제학교 입학 · 적응','/en/intl-school/','school'],['수업 문의','무료 상담 신청','/#apply','ask']],
+ jp:[['회화 과정','여행 · 비즈니스 · 일드','/#/jp','chat'],['자격증 과정','JLPT · JPT · SJPT','/jp/jlpt-n3/','cert'],['내신 대비','국제학교 입학 · 적응','/jp/intl-school/','school'],['수업 문의','무료 상담 신청','/#apply','ask']],
+ cn:[['회화 과정','여행 · 비즈니스 · 중드','/#/cn','chat'],['자격증 과정','HSK · HSKK · TSC','/cn/hsk-3/','cert'],['내신 대비','국제학교 입학 · 적응','/cn/intl-school/','school'],['수업 문의','무료 상담 신청','/#apply','ask']]
 };
 var I={
  chat:'<path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/>',
@@ -18,6 +18,8 @@ function build(nav){
   var m=document.createElement('div');m.className='dd-menu';
   m.innerHTML=D[k].map(function(x){return '<a class="dd-i" href="'+x[2]+'"><span class="dd-ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+I[x[3]]+'</svg></span><span class="dd-t"><b>'+x[0]+'</b><small>'+x[1]+'</small></span></a>'}).join('');
   w.appendChild(m);
+  w.addEventListener('click',function(){w.classList.add('shut');if(document.activeElement&&document.activeElement.blur)document.activeElement.blur()});
+  w.addEventListener('mouseleave',function(){w.classList.remove('shut')});
  });
 }
 function go(){[].forEach.call(document.querySelectorAll('header nav'),build)}
