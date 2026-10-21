@@ -74,6 +74,11 @@ h1,h2,.logo{font-family:'Noto Sans KR',sans-serif;font-weight:800;letter-spacing
 .btn:hover,.tab:hover{transform:translate(-1px,-1px)}
 .contact textarea{resize:vertical;min-height:110px}
 .lb{font-weight:700;font-size:14px;margin-top:6px}
+.contact .agree{display:flex;gap:10px;align-items:flex-start;font-weight:700;font-size:14px;cursor:pointer;margin-top:4px}
+.contact .agree input{width:20px;height:20px;padding:0;margin:1px 0 0;flex:none;accent-color:var(--brand)}
+.pv{font-size:13px;color:var(--mute);line-height:1.6}.pv summary{cursor:pointer;font-weight:700}.pv p{margin:6px 0 0}
+.hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0;padding:0!important;border:0!important}
+.ok.bad{color:#e5484d}
 .checks{display:flex;gap:8px;flex-wrap:wrap}.checks label{cursor:pointer}
 .contact .checks input{position:absolute;opacity:0;width:0;height:0;padding:0;border:0}
 .checks span{display:inline-block;padding:10px 18px;border:2px solid var(--ink);border-radius:999px;background:var(--card);font-weight:700}
@@ -227,6 +232,9 @@ nav a.nl:hover{color:var(--brand)}
 <div class="kmap" id="kmap" hidden></div>
 <label class="lb" for="q2">문의 내용</label>
 <textarea id="q2" rows="4" placeholder="궁금한 점이나 원하는 수업 방식을 자유롭게 적어 주세요"></textarea>
+<input type="text" id="hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<label class="agree" for="cs"><input type="checkbox" id="cs"><span>개인정보 수집·이용에 동의합니다 (필수)</span></label>
+<details class="pv"><summary>수집·이용 내용 보기</summary><p>수집 항목: 이름, 연락처, 관심 언어, 학습 목적, 주소, 문의 내용<br>이용 목적: 상담 및 수업 안내<br>보유 기간: 상담 안내 목적이 끝나면 지체 없이 파기합니다. 동의를 거부할 수 있으며, 거부하면 상담 신청이 어렵습니다.</p></details>
 <button class="btn" type="button" id="go">상담 신청하기</button>
 <div class="ok" id="ok"></div>
 </div>
@@ -241,28 +249,43 @@ nav a.nl:hover{color:var(--brand)}
 var tabs=document.getElementById('tabs');
 var KEYS=['en','jp','cn'],NAMES=['영어회화','일본어회화','중국어회화'];
 NAMES.forEach(function(k,i){var b=document.createElement('button');b.type='button';b.className='tab ph'+i;b.innerHTML='<b>'+k+'</b><small>자세히 보기 →</small>';b.onclick=function(){location.hash='#/'+KEYS[i]};tabs.appendChild(b)});
+var APPLY_URL='https://script.google.com/macros/s/AKfycbzg6DYJdO_y-EXku9LzTQoD0ROuB5KhfzRP0ufRecUglpUghU0ugQtYnf_XPXhpYlti/exec';
 var $=function(i){return document.getElementById(i)};
 function fe(el,m){var n=el.parentNode.querySelector('.err[data-for="'+el.id+'"]');if(!n){n=document.createElement('small');n.className='err';n.setAttribute('data-for',el.id);n.setAttribute('role','alert');el.insertAdjacentElement('afterend',n)}n.textContent=m||'';n.style.display=m?'block':'none';el.setAttribute('aria-invalid',m?'true':'false');return !m}
 function cN(){var v=$('n').value.trim().replace(/\s+/g,' ');return fe($('n'),/^[가-힣a-zA-Z ]{2,30}$/.test(v)?'':'이름을 2자 이상 한글 또는 영문으로 입력해 주세요.')}
 function cP(){return fe($('p'),/^010-\d{4}-\d{4}$/.test($('p').value)?'':'010-0000-0000 형식으로 휴대폰 번호 11자리를 입력해 주세요.')}
 function cL(){return fe($('lgs'),document.querySelectorAll('input[name=lg]:checked').length?'':'관심 언어를 하나 이상 선택해 주세요.')}
+function cC(){return fe($('cs'),$('cs').checked?'':'개인정보 수집·이용에 동의해 주세요.')}
 function cS(){return fe($('sd'),$('sd').value?'':'시·도를 선택해 주세요.')}
 function cA(){var v=$('a1').value.trim().replace(/\s+/g,' ');var road=/(대로|로|길)\s?(\d+번?길\s?)?\d+(-\d+)?/.test(v),jibun=/[가-힣]+(동|읍|면|리)\s?(산\s?)?\d+(-\d+)?/.test(v);
 return fe($('a1'),(road||jibun)&&/[가-힣]{2,}/.test(v)?'':'도로명 + 건물번호(예: 테헤란로 123) 또는 동 + 번지(예: 역삼동 123-4)까지 입력해 주세요.')}
 function cD(){var v=$('a2').value.trim();return fe($('a2'),v.length>=2&&(/\d/.test(v)||/(층|호|동|지하|단독|주택)/.test(v))?'':'상세주소를 입력해 주세요. 예: 101동 1203호, 2층, 단독주택')}
 $('p').addEventListener('input',function(){var d=this.value.replace(/\D/g,'').slice(0,11),f=d;if(d.length>7)f=d.slice(0,3)+'-'+d.slice(3,7)+'-'+d.slice(7);else if(d.length>3)f=d.slice(0,3)+'-'+d.slice(3);this.value=f;if(this.getAttribute('aria-invalid')==='true')cP()});
 [['n',cN],['p',cP],['a1',cA],['a2',cD]].forEach(function(x){$(x[0]).addEventListener('blur',function(){if(this.value)x[1]()})});
+$('cs').addEventListener('change',cC);
 $('sd').addEventListener('change',function(){cS();if($('a1').value)checkAddrKakao(function(){})});
 $('a1').addEventListener('blur',function(){if(cA()&&$('sd').value)checkAddrKakao(function(){})});
 ['sd','a1'].forEach(function(id){$(id).addEventListener('input',function(){addrOK=false;$('kmap').hidden=true;var m=$('amsg');m.textContent='';m.className='amsg'})});
 [].forEach.call(document.querySelectorAll('input[name=lg]'),function(c){c.addEventListener('change',cL)});
-$('go').onclick=function(){var o=$('ok');var r=[[cN,'n'],[cP,'p'],[cL,'lgs'],[cS,'sd'],[cA,'a1'],[cD,'a2']].map(function(x){return [x[0](),x[1]]});
+$('go').onclick=function(){var o=$('ok');var r=[[cN,'n'],[cP,'p'],[cL,'lgs'],[cS,'sd'],[cA,'a1'],[cD,'a2'],[cC,'cs']].map(function(x){return [x[0](),x[1]]});
 var bad=r.filter(function(x){return !x[0]})[0];
 if(bad){o.style.display='none';var el=$(bad[1]);el.scrollIntoView({block:'center',behavior:'smooth'});if(el.focus&&bad[1]!=='lgs')el.focus();return}
 o.style.display='none';var btn=$('go'),old=btn.textContent;btn.disabled=true;btn.textContent='주소 확인 중...';
 checkAddrKakao(function(ok){btn.disabled=false;btn.textContent=old;
 if(!ok){$('a1').scrollIntoView({block:'center',behavior:'smooth'});$('a1').focus();return}
-o.textContent='신청 내용이 확인되었어요! (샘플 화면: 실제 접수는 연결 후 가능)';o.style.display='block'})};
+var q=new URLSearchParams();
+q.set('name',$('n').value.trim().replace(/\s+/g,' '));q.set('phone',$('p').value);
+q.set('lang',[].map.call(document.querySelectorAll('input[name=lg]:checked'),function(c){return c.value}).join(', '));
+q.set('goal',$('g').value);q.set('address',$('sd').value+' '+$('a1').value.trim().replace(/\s+/g,' ')+' '+$('a2').value.trim());
+q.set('message',$('q2').value.trim());q.set('source',location.href);q.set('consent','1');q.set('website',$('hp').value);
+btn.disabled=true;btn.textContent='전송 중...';
+fetch(APPLY_URL,{method:'POST',mode:'no-cors',body:q}).then(function(){
+o.className='ok';o.textContent='신청이 접수되었어요! 확인 후 연락드릴게요.';o.style.display='block';
+['n','p','a1','a2','q2'].forEach(function(i){$(i).value=''});$('g').value='';$('sd').value='';$('cs').checked=false;
+[].forEach.call(document.querySelectorAll('input[name=lg]'),function(c){c.checked=false});
+addrOK=false;$('kmap').hidden=true;var m=$('amsg');m.textContent='';m.className='amsg';
+btn.disabled=false;btn.textContent=old;o.scrollIntoView({block:'center',behavior:'smooth'})
+}).catch(function(){o.className='ok bad';o.textContent='전송에 실패했어요. 잠시 후 다시 시도해 주세요.';o.style.display='block';btn.disabled=false;btn.textContent=old})})};
 
 var L={
 en:{i:0,name:"영어회화",eng:"English Conversation",kw:"영어",h:"영어로 자신 있게 말하는 시간",d:"1:1 화상 수업에서 직접 말하며 영어 회화 실력을 키워요.",
