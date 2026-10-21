@@ -170,6 +170,42 @@ header .logo b{margin-left:.25em;padding:0;background:none;color:#5b3cff;font-si
 header .logo{white-space:nowrap}
 @media(max-width:640px){header .wrap{display:flex;justify-content:space-between;gap:6px}header .wrap{padding:0 12px}header .logo{font-size:16px}header .logo::before{width:28px;height:28px;margin-right:7px}header .wrap>nav{gap:0}header nav a{padding:6px 5px;font-size:12px}header nav a[href$="#apply"]{display:none}}
 @media(max-width:400px){header .logo{font-size:14px}header .logo::before{width:24px;height:24px;margin-right:5px}header nav a{padding:6px 3px;font-size:11.5px}}
+
+/* 메인 슬라이드 히어로 */
+.hs{position:relative;height:clamp(520px,82vh,720px);background:#0f0f12;color:#fff;overflow:hidden}
+.hs-track{position:absolute;inset:0}
+.hs-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .9s ease,visibility 0s linear .9s}
+.hs-slide.on{opacity:1;visibility:visible;transition:opacity .9s ease}
+.hs-bg{position:absolute;inset:0;background:#1b1530 center/cover no-repeat;transform:scale(1.08);transition:transform 7s ease-out}
+.hs-slide.on .hs-bg{transform:scale(1)}
+.hs-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,14,.82) 0%,rgba(10,10,14,.55) 55%,rgba(10,10,14,.25) 100%),linear-gradient(0deg,rgba(10,10,14,.7),transparent 45%)}
+.hs .wrap{max-width:1360px;padding:0 28px}.hs-in h1,.hs-in p{word-break:keep-all}
+.hs-in{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;padding-bottom:150px}
+.hs-tag{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.14em;color:#d4ff3f;border:1.5px solid rgba(212,255,63,.7);border-radius:999px;padding:5px 14px;margin-bottom:6px;opacity:0;transform:translateY(16px)}
+.hs-in h1{color:#fff;margin:14px 0 14px;font-size:clamp(34px,6.2vw,64px);line-height:1.25;letter-spacing:-.03em;opacity:0;transform:translateY(22px)}
+.hs-in h1 em{font-style:normal;display:inline-block;background:#d4ff3f;color:#0f0f12;padding:0 .14em;border-radius:.2em;line-height:1.2}
+.hs-in p{color:rgba(255,255,255,.88);font-size:clamp(16px,2.2vw,20px);max-width:520px;margin:0;opacity:0;transform:translateY(22px)}
+.hs-slide.on .hs-tag,.hs-slide.on h1,.hs-slide.on p{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.hs-slide.on h1{transition-delay:.12s}.hs-slide.on p{transition-delay:.24s}
+.hs-ui{position:absolute;left:0;right:0;bottom:0;z-index:3;padding-bottom:26px;display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.hs-cta{display:flex;flex-wrap:wrap;gap:10px}
+.hs .btn{margin:0}.hs .btn.ghost{color:#fff;border-color:rgba(255,255,255,.75);background:rgba(255,255,255,.08);backdrop-filter:blur(4px)}
+.hs-nav{width:100%;display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.hs-dots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;flex:1;max-width:620px}
+.hs-dot{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:2px;padding-top:12px;position:relative;color:rgba(255,255,255,.55);transition:color .3s}
+.hs-dot:focus-visible{outline:2px solid #d4ff3f;outline-offset:3px}
+.hs-dot i{position:absolute;left:0;top:0;height:3px;width:100%;background:rgba(255,255,255,.25);border-radius:3px;overflow:hidden}
+.hs-dot i::after{content:"";position:absolute;inset:0;background:#d4ff3f;transform:scaleX(0);transform-origin:left}
+.hs-dot.on{color:#fff}.hs-dot.on i::after{animation:hsfill var(--hs,5.5s) linear forwards}
+.hs.paused .hs-dot.on i::after{animation-play-state:paused}
+.hs-dot.done i::after{transform:scaleX(1)}
+@keyframes hsfill{to{transform:scaleX(1)}}
+.hs-n{font-size:12px;font-weight:700;letter-spacing:.1em}.hs-k{font-size:15px;font-weight:800}
+.hs-arrows{display:flex;gap:8px}
+.hs-ar{all:unset;box-sizing:border-box;cursor:pointer;width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(255,255,255,.6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;transition:background .25s,color .25s,transform .25s}
+.hs-ar:hover,.hs-ar:focus-visible{background:#d4ff3f;color:#0f0f12;border-color:#d4ff3f;transform:translateY(-1px)}
+@media(max-width:640px){.hs .wrap{padding:0 20px}.hs{height:clamp(500px,86vh,640px)}.hs-in{padding-bottom:170px}.hs-arrows{display:none}.hs-dots{gap:8px}.hs-k{font-size:13px}.hs-ui{padding-bottom:20px;gap:18px}}
+@media(prefers-reduced-motion:reduce){.hs-bg{transition:none;transform:none}.hs-slide,.hs-slide.on{transition:none}.hs-dot.on i::after{animation:none;transform:scaleX(1)}}
 </style>
 </head>
 <body>
@@ -179,23 +215,11 @@ header .logo{white-space:nowrap}
 </div></header>
 
 <main id="home">
-<div class="hero"><div class="wrap">
-<span class="tag">영어 · 일본어 · 중국어</span>
-<h1>얼굴 보며 말하면<br><em>말문이 열립니다</em></h1>
-<p>화상 수업을 중심으로, 필요할 땐 전화로도. 영어·일본어·중국어 1:1 회화 과외를 시작하세요.</p>
-<div class="cta"><a class="btn" href="#apply">무료 상담 신청</a><a class="btn ghost" href="/reviews/">수업후기 보기</a></div>
-<div class="chips"><span class="chip"><i class="dot"></i>화상 수업 중심</span><span class="chip"><i class="dot"></i>전화 수업 가능</span><span class="chip"><i class="dot"></i>1:1 맞춤</span></div>
-<div class="mock" aria-hidden="true">
-<div class="mbar"><span></span><span></span><span></span><b>LIVE · 1:1 CLASS</b></div>
-<div class="mbody">
-<div class="tile t1"><em>Tutor</em></div>
-<div class="tile t2"><em>You</em></div>
-</div>
-<div class="bubbles"><span class="bb b1">How was your weekend?</span><span class="bb b2">週末はどうでしたか？</span><span class="bb b3">周末过得怎么样？</span></div>
-<div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-</div>
-</div></div>
-
+<section class="hs" aria-roledescription="carousel" aria-label="수업 소개">
+<div class="hs-track"><div class="hs-slide on" aria-hidden="false"><div class="hs-bg" style="background-image:url(https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1920&q=80)"></div><div class="wrap hs-in"><span class="hs-tag">OPIc · JLPT · HSK</span><h1>자격증 준비,<br><em>말하기부터</em> 시작하세요</h1><p>시험 말하기 파트까지 1:1로 연습하면 점수 올리기가 쉬워져요.</p></div></div><div class="hs-slide" aria-hidden="true"><div class="hs-bg" style="background-image:url(https://images.unsplash.com/photo-1503365194569-df4e1d04cec1?auto=format&fit=crop&w=1920&q=80)"></div><div class="wrap hs-in"><span class="hs-tag">TRAVEL</span><h1>여행 회화,<br><em>지금</em> 시작하세요</h1><p>주문하고 길 묻는 일이 현지에서 훨씬 쉬워져요.</p></div></div><div class="hs-slide" aria-hidden="true"><div class="hs-bg" style="background-image:url(https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1920&q=80)"></div><div class="wrap hs-in"><span class="hs-tag">ENGLISH · 日本語 · 中文</span><h1>외국어,<br><em>오늘부터</em> 말해 보세요</h1><p>얼굴 보며 대화하면 입이 저절로 쉽게 열려요.</p></div></div><div class="hs-slide" aria-hidden="true"><div class="hs-bg" style="background-image:url(https://images.unsplash.com/photo-1758691737182-d42aefd6dee8?auto=format&fit=crop&w=1920&q=80)"></div><div class="wrap hs-in"><span class="hs-tag">BUSINESS</span><h1>비즈니스 회화,<br><em>자신 있게</em> 시작하세요</h1><p>회의, 메일, 전화 표현이 한결 쉬워져요.</p></div></div></div>
+<div class="wrap hs-ui"><div class="hs-cta"><a class="btn" href="#apply">무료 상담 신청</a><a class="btn ghost" href="/reviews/">수업후기 보기</a></div>
+<div class="hs-nav"><div class="hs-dots"><button type="button" class="hs-dot on" data-i="0"><span class="hs-n">01</span><span class="hs-k">자격증</span><i></i></button><button type="button" class="hs-dot" data-i="1"><span class="hs-n">02</span><span class="hs-k">여행</span><i></i></button><button type="button" class="hs-dot" data-i="2"><span class="hs-n">03</span><span class="hs-k">외국어</span><i></i></button><button type="button" class="hs-dot" data-i="3"><span class="hs-n">04</span><span class="hs-k">비즈니스</span><i></i></button></div><div class="hs-arrows"><button type="button" class="hs-ar" data-d="-1" aria-label="이전">&#8592;</button><button type="button" class="hs-ar" data-d="1" aria-label="다음">&#8594;</button></div></div></div>
+</section>
 <div class="marq" aria-hidden="true"><div class="track"><span>Hello</span><span>こんにちは</span><span>你好</span><span>How are you?</span><span>お元気ですか</span><span>你好吗</span><span>Hello</span><span>こんにちは</span><span>你好</span><span>How are you?</span><span>お元気ですか</span><span>你好吗</span></div></div>
 <section class="alt" id="lang"><div class="wrap">
 <h2>3개 언어, 하나의 서비스</h2>
@@ -354,6 +378,23 @@ addrOK=false;$('kmap').hidden=true;
 m.textContent='카카오맵에서 찾을 수 없는 주소예요. 다시 확인해 주세요.';m.className='amsg bad'
 }
 cb(addrOK)})}
+</script>
+<script>
+(function(){var hs=document.querySelector('.hs');if(!hs)return;
+var S=[].slice.call(hs.querySelectorAll('.hs-slide')),D=[].slice.call(hs.querySelectorAll('.hs-dot')),i=0,t=null,T=5500,rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+hs.style.setProperty('--hs',T+'ms');
+function go(n){n=(n+S.length)%S.length;S[i].classList.remove('on');S[i].setAttribute('aria-hidden','true');
+D.forEach(function(d,k){d.classList.remove('on','done');if(k<n)d.classList.add('done');var x=d.querySelector('i');x.style.animation='none';void x.offsetWidth;x.style.animation=''});
+i=n;S[i].classList.add('on');S[i].setAttribute('aria-hidden','false');D[i].classList.add('on');play()}
+function play(){clearTimeout(t);if(rm||hs.classList.contains('paused'))return;t=setTimeout(function(){go(i+1)},T)}
+D.forEach(function(d){d.addEventListener('click',function(){go(+d.getAttribute('data-i'))})});
+[].forEach.call(hs.querySelectorAll('.hs-ar'),function(b){b.addEventListener('click',function(){go(i+ +b.getAttribute('data-d'))})});
+hs.addEventListener('mouseenter',function(){hs.classList.add('paused');clearTimeout(t)});
+hs.addEventListener('mouseleave',function(){hs.classList.remove('paused');go(i)});
+var x0=null;hs.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+hs.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>40)go(i+(dx<0?1:-1))});
+document.addEventListener('visibilitychange',function(){if(document.hidden){clearTimeout(t)}else{go(i)}});
+play();})();
 </script>
 </body>
 </html>
