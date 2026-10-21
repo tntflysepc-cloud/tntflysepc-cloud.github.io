@@ -221,8 +221,41 @@ header nav .dd-i:hover,header nav .dd-i:focus-visible{background:var(--bg2);colo
 .dd.shut .dd-menu{opacity:0!important;visibility:hidden!important;transition:none!important}
 .dd-ic svg{width:16px;height:16px}
 @media(max-width:640px){.dd-menu{display:none}header nav .dd::after{display:none}}
+
+/* 푸터 + 플로팅 버튼 */
+footer.sf{background:#0f0f12;color:#d9d7e0;border-top:0;margin-top:0;padding:34px 0 28px;text-align:center;font-size:14px}
+footer.sf a{color:#d9d7e0;margin:0;text-decoration:none;display:inline}footer.sf a:hover{color:#d4ff3f}
+.sf-brand{display:flex;flex-direction:column;align-items:center;gap:4px}
+.sf-brand b{font-size:18px;color:#fff}.sf-brand span:last-child{color:#a9a7b5;font-size:13px}
+.sf-logo{width:34px;height:34px;background:url(/img/logo.svg) center/contain no-repeat}
+.sf-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin:20px 0 4px;padding-bottom:18px;border-bottom:1px solid #2a2a36}
+.sf-nav a{font-weight:700;color:#fff}
+.sf-h{margin:18px 0 8px;font-size:13px;font-weight:800;color:#fff}
+.sf-links{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;color:#a9a7b5}.sf-links a{color:#a9a7b5;font-size:13.5px}
+.sf-line{margin-top:20px;padding-top:16px;border-top:1px solid #2a2a36;color:#d9d7e0}.sf-line b a{color:#fff}
+.sf-copy{margin-top:16px;color:#7d7b88;font-size:12px}
+.fab{position:fixed;right:16px;bottom:18px;z-index:40;display:flex;flex-direction:column;gap:10px}
+.fab a{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,.28);transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.fab a:hover{transform:translateY(-3px)}
+.fab-k{background:#fee500;color:#191600}.fab-p{background:#5b3cff;color:#fff}
+@media(max-width:640px){footer.sf{padding:26px 0 76px}.sf-nav{gap:4px 14px;margin-top:16px}.fab{right:12px;bottom:14px}.fab a{width:46px;height:46px}}
+
+/* 모바일에서 홈이 너무 길지 않게 */
+@media(max-width:640px){
+section{padding:34px 0}
+#home section h2{font-size:22px;margin:0 0 4px}.sub{margin-bottom:14px}
+#why .grid{grid-template-columns:1fr 1fr;gap:10px}
+#why .card{padding:14px 12px;box-shadow:3px 3px 0 var(--ink)}
+#why .card .ic{width:34px;height:34px;margin-bottom:8px}
+#why .card h3{font-size:15px;margin:0 0 4px;line-height:1.35}#why .card p{font-size:12.5px;line-height:1.5}
+#how .steps{grid-template-columns:1fr 1fr;gap:10px}
+#how .step{padding:14px 12px;box-shadow:3px 3px 0 var(--ink)}
+#how .step:before{width:26px;height:26px;font-size:13px;margin-bottom:6px}
+#how .step h3{font-size:15px}#how .step p{font-size:12.5px;line-height:1.5}
+.marq{padding:10px 0}
+}
 </style>
-<script src="/nav.js?v=4" defer></script></head>
+<script src="/nav.js?v=4" defer></script><script src="/footer.js?v=1" defer></script></head>
 <body>
 <header><div class="wrap">
 <div class="logo">트리플<b> 스피크</b></div>
