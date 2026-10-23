@@ -370,24 +370,42 @@ a.pn-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(20,20,40,
 .tt-for{display:block;border-top:1px solid var(--line);padding-top:16px;font-size:13.5px;font-weight:500;color:var(--c)}
 .tt:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(20,20,40,.08)}
 .mb{display:none}
-.fl-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;counter-reset:none}
-.fl-step{position:relative;padding:46px 22px 0 0}
-.fl-step::before{content:"";position:absolute;left:0;right:0;top:14px;height:2px;background:var(--line)}
-.fl-step::after{content:"";position:absolute;left:0;top:7px;width:16px;height:16px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 5px color-mix(in srgb,var(--brand) 16%,transparent)}
-.fl-no{font:300 15px 'Noto Sans KR',sans-serif;color:var(--brand);letter-spacing:1px;display:block;margin-bottom:8px;font-weight:700}
-.fl-step h3{font-size:20px;letter-spacing:-.5px;margin:0 0 8px}
+.fl-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);position:relative}
+.fl-track{position:absolute;top:15px;height:4px;border-radius:2px;background:var(--line);left:0;width:0}
+.fl-fill{display:block;height:100%;width:0;border-radius:2px;background:var(--brand);transition:width .8s cubic-bezier(.4,.1,.2,1)}
+.fl-step{position:relative;padding:48px 22px 0 0;cursor:pointer;outline:0;-webkit-tap-highlight-color:transparent}
+.fl-dot{position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:50%;background:var(--bg2);border:3px solid var(--line);transition:background .3s,border-color .3s,box-shadow .3s,transform .3s}
+.fl-step.done .fl-dot,.fl-step.on .fl-dot{background:var(--brand);border-color:var(--brand)}
+.fl-step.on .fl-dot{box-shadow:0 0 0 6px color-mix(in srgb,var(--brand) 18%,transparent);transform:scale(1.1)}
+.fl-no{display:block;font-size:14px;font-weight:700;letter-spacing:1px;color:var(--mute);margin-bottom:8px;transition:color .3s}
+.fl-step.done .fl-no,.fl-step.on .fl-no{color:var(--brand)}
+.fl-step h3{font-size:20px;letter-spacing:-.5px;margin:0 0 8px;transition:color .3s}
+.fl-step.on h3{color:var(--brand)}
 .fl-step p{margin:0;color:var(--mute);font-size:15px;line-height:1.75}
-.fq-wrap{max-width:820px!important}
-.fq-list{border-top:1px solid #d8d4c8;margin-top:28px}
-.fq{border-bottom:1px solid #d8d4c8}
-.fq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 4px;font-size:17px;font-weight:500;letter-spacing:-.3px}
+.fl-step:hover .fl-dot{border-color:var(--brand)}
+.fl-step:focus-visible h3{text-decoration:underline}
+.fq-wrap{display:grid!important;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start;max-width:1040px!important}
+.fq-side{position:sticky;top:96px}
+.fq-help{margin-top:30px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;display:grid;gap:8px}
+.fq-help b{font-size:16px}.fq-help span{color:var(--mute);font-size:14.5px;line-height:1.7}
+.fq-help a{margin-top:6px;color:var(--brand);font-weight:700;text-decoration:none;font-size:15px}
+.fq-list{display:grid;gap:12px}
+.fq{background:var(--card);border:1px solid var(--line);border-radius:20px;transition:border-color .3s,box-shadow .3s}
+.fq[open]{border-color:color-mix(in srgb,var(--brand) 45%,var(--line));box-shadow:0 12px 30px rgba(91,60,255,.08)}
+.fq summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:20px 22px;font-size:16.5px;font-weight:500;letter-spacing:-.3px}
 .fq summary::-webkit-details-marker{display:none}
-.fq summary::after{content:"+";font-size:26px;font-weight:300;color:var(--brand);transition:transform .3s;line-height:1}
-.fq[open] summary::after{transform:rotate(45deg)}
-.fq[open] summary{color:var(--brand)}
-.fq>div{padding:0 4px 26px;color:var(--mute);font-size:15.5px;line-height:1.85;max-width:680px;animation:fqin .35s ease}
-@keyframes fqin{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-@media(max-width:820px){.mb{display:inline}.fl-list{grid-template-columns:1fr;gap:6px}.fl-step{padding:0 0 26px 40px}.fl-step::before{left:7px;right:auto;top:16px;bottom:-10px;width:2px;height:auto}.fl-step:last-child::before{display:none}.fl-step::after{top:3px}.fl-step h3{font-size:18px}.fq summary{font-size:16px;padding:20px 2px}}
+.fq summary span{flex:1}
+.fq-q{font-style:normal;flex:none;width:30px;height:30px;border-radius:50%;background:color-mix(in srgb,var(--brand) 12%,transparent);color:var(--brand);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;transition:background .3s,color .3s}
+.fq[open] .fq-q{background:var(--brand);color:#fff}
+.fq summary::after{content:"";flex:none;width:28px;height:28px;border-radius:50%;background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Cpath d='M14 8v12M8 14h12' stroke='%235b3cff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center/28px no-repeat;transition:transform .4s cubic-bezier(.3,.8,.3,1)}
+.fq[open] summary::after{transform:rotate(135deg)}
+.fq-b{overflow:hidden;height:0;transition:height .45s cubic-bezier(.3,.8,.3,1)}
+.fq[open] .fq-b{height:auto}
+.fq-b p{margin:0;padding:0 22px 24px 66px;color:var(--mute);font-size:15.5px;line-height:1.85}
+.fq-b{will-change:height}
+@media(max-width:820px){.mb{display:inline}.fq-wrap{grid-template-columns:1fr!important;gap:26px!important}.fq-side{position:static}.fq-help{display:none}
+.fl-list{grid-template-columns:1fr;gap:6px}.fl-track{top:0;left:9px!important;width:4px!important}.fl-fill{width:100%;height:0;transition:height .8s cubic-bezier(.4,.1,.2,1)}
+.fl-step{padding:0 0 26px 44px}.fl-dot{top:0}.fl-step h3{font-size:18px}.fq summary{padding:16px 16px;font-size:15.5px}.fq-b p{padding:0 18px 20px 18px}}
 </style>
 <script src="/nav.js?v=4" defer></script><script src="/footer.js?v=1" defer></script><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"트리플 스피크","url":"https://tntflysepc-cloud.github.io/","inLanguage":"ko"},{"@type":"Organization","name":"트리플 스피크","url":"https://tntflysepc-cloud.github.io/","logo":"https://tntflysepc-cloud.github.io/favicon.png","description":"영어·일본어·중국어 1:1 화상 회화 과외"}]}</script></head>
 <body>
@@ -450,23 +468,26 @@ g.innerHTML=HOME_REVIEWS.map(function(r){return '<div class="pn-card pn-r"><span
 <section id="flow" class="pn pn-rv"><div class="wrap">
 <p class="pn-eyebrow ap-eb">HOW IT WORKS</p>
 <h2 class="pn-h">신청하고 첫 수업까지,<br>네 걸음이면 돼요</h2>
-<p class="pn-sub">복잡한 절차 없이 이야기 나누는 것부터 시작해요.</p>
-<ol class="fl-list">
-<li class="fl-step"><span class="fl-no">01</span><h3>상담 신청</h3><p>배우고 싶은 언어와 목표를 남겨 주세요.</p></li>
-<li class="fl-step"><span class="fl-no">02</span><h3>수준 확인</h3><p>간단한 대화로 지금 실력을 같이 확인해요.</p></li>
-<li class="fl-step"><span class="fl-no">03</span><h3>방식과 일정 정하기</h3><p>화상을 기본으로, 전화 수업도 고를 수 있어요.</p></li>
-<li class="fl-step"><span class="fl-no">04</span><h3>첫 수업 시작</h3><p>정해진 일정에 맞춰 1:1 수업을 시작해요.</p></li>
+<p class="pn-sub">단계를 눌러 보세요. 지금 어디쯤인지 게이지로 보여 드려요.</p>
+<ol class="fl-list" id="fl">
+<div class="fl-track"><i class="fl-fill"></i></div>
+<li class="fl-step on" tabindex="0" role="button" aria-pressed="true"><i class="fl-dot"></i><span class="fl-no">01</span><h3>상담 신청</h3><p>배우고 싶은 언어와 목표를 남겨 주세요.</p></li>
+<li class="fl-step" tabindex="0" role="button" aria-pressed="false"><i class="fl-dot"></i><span class="fl-no">02</span><h3>수준 확인</h3><p>간단한 대화로 지금 실력을 같이 확인해요.</p></li>
+<li class="fl-step" tabindex="0" role="button" aria-pressed="false"><i class="fl-dot"></i><span class="fl-no">03</span><h3>방식과 일정 정하기</h3><p>화상을 기본으로, 전화 수업도 고를 수 있어요.</p></li>
+<li class="fl-step" tabindex="0" role="button" aria-pressed="false"><i class="fl-dot"></i><span class="fl-no">04</span><h3>첫 수업 시작</h3><p>정해진 일정에 맞춰 1:1 수업을 시작해요.</p></li>
 </ol></div></section>
 
 <section id="faq" class="pn"><div class="wrap fq-wrap">
-<h2 class="pn-h">자주 묻는 질문</h2>
+<div class="fq-side"><p class="pn-eyebrow ap-eb">Q&amp;A</p><h2 class="pn-h">신청 전에<br>가장 많이 물어보세요</h2>
+<p class="ap-sub">망설여지는 부분부터 하나씩 풀어 볼게요.</p>
+<div class="fq-help"><b>찾는 질문이 없나요?</b><span>상담에서 편하게 물어보세요. 신청 폼에 궁금한 점을 적어 주셔도 돼요.</span><a href="#apply">상담 신청하기 →</a></div></div>
 <div class="fq-list">
-<details class="fq" open><summary>수업은 어떻게 진행되나요?</summary><div>대부분 화상으로 얼굴을 보며 1:1로 진행해요. 상황에 따라 전화 수업도 가능하니 상담 때 편한 방식을 알려 주세요.</div></details>
-<details class="fq"><summary>왕초보인데 따라갈 수 있을까요?</summary><div>괜찮아요. 현재 실력을 먼저 확인한 뒤 그 수준에서 시작해요. 처음이라 막막한 분도 쉬운 문장부터 천천히 이어 갑니다.</div></details>
-<details class="fq"><summary>시험이나 면접 준비도 할 수 있나요?</summary><div>네. 토익스피킹, OPIc, JLPT, HSK처럼 목표 시험이 있으면 그 유형에 맞춰 말하기 중심으로 준비해요. 과정별 안내는 각 언어 페이지에서 볼 수 있어요.</div></details>
-<details class="fq"><summary>수업 시간과 횟수는 어떻게 정하나요?</summary><div>상담할 때 생활 패턴과 목표를 듣고 맞춰요. 처음 정한 일정이 맞지 않으면 이야기해 주세요.</div></details>
-<details class="fq"><summary>상담 신청하면 바로 시작해야 하나요?</summary><div>아니에요. 상담은 내용을 확인하고 궁금한 점을 푸는 단계예요. 충분히 이야기 나눈 뒤에 시작 여부를 정하시면 됩니다.</div></details>
-<details class="fq"><summary>수강료는 어떻게 안내받나요?</summary><div>언어와 수업 횟수에 따라 달라서 상담 때 자세히 안내해 드려요.</div></details>
+<details class="fq" open><summary><i class="fq-q">Q</i><span>수업은 어떻게 진행되나요?</span></summary><div class="fq-b"><p>대부분 화상으로 얼굴을 보며 1:1로 진행해요. 상황에 따라 전화 수업도 가능하니 상담 때 편한 방식을 알려 주세요.</p></div></details>
+<details class="fq"><summary><i class="fq-q">Q</i><span>왕초보인데 따라갈 수 있을까요?</span></summary><div class="fq-b"><p>괜찮아요. 현재 실력을 먼저 확인한 뒤 그 수준에서 시작해요. 처음이라 막막한 분도 쉬운 문장부터 천천히 이어 갑니다.</p></div></details>
+<details class="fq"><summary><i class="fq-q">Q</i><span>시험이나 면접 준비도 할 수 있나요?</span></summary><div class="fq-b"><p>네. 토익스피킹, OPIc, JLPT, HSK처럼 목표 시험이 있으면 그 유형에 맞춰 말하기 중심으로 준비해요. 과정별 안내는 각 언어 페이지에서 볼 수 있어요.</p></div></details>
+<details class="fq"><summary><i class="fq-q">Q</i><span>수업 시간과 횟수는 어떻게 정하나요?</span></summary><div class="fq-b"><p>상담할 때 생활 패턴과 목표를 듣고 맞춰요. 처음 정한 일정이 맞지 않으면 이야기해 주세요.</p></div></details>
+<details class="fq"><summary><i class="fq-q">Q</i><span>상담 신청하면 바로 시작해야 하나요?</span></summary><div class="fq-b"><p>아니에요. 상담은 내용을 확인하고 궁금한 점을 푸는 단계예요. 충분히 이야기 나눈 뒤에 시작 여부를 정하시면 됩니다.</p></div></details>
+<details class="fq"><summary><i class="fq-q">Q</i><span>수강료는 어떻게 안내받나요?</span></summary><div class="fq-b"><p>언어와 수업 횟수에 따라 달라서 상담 때 자세히 안내해 드려요.</p></div></details>
 </div></div></section>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"수업은 어떻게 진행되나요?","acceptedAnswer":{"@type":"Answer","text":"대부분 화상으로 얼굴을 보며 1:1로 진행해요. 상황에 따라 전화 수업도 가능해요."}},
@@ -635,6 +656,32 @@ if(!els.length)return;d.classList.add('sr-on');
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var t=e.target;io.unobserve(t);t.classList.add('in');setTimeout(function(){t.classList.remove('sr','in');t.style.transitionDelay=''},1800)})},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
 [].forEach.call(els,function(el){var k=[].indexOf.call(el.parentNode.children,el);el.classList.add('sr');el.style.transitionDelay=Math.min(k,3)*.14+'s';io.observe(el)});
 /* 해시 이동으로 보이게 된 요소도 처리 */
+})();
+</script>
+<script>
+(function(){
+var fl=document.getElementById('fl');if(fl){
+var st=[].slice.call(fl.querySelectorAll('.fl-step')),tr=fl.querySelector('.fl-track'),fi=fl.querySelector('.fl-fill'),cur=0;
+function vert(){return matchMedia('(max-width:820px)').matches}
+function geo(){var ob=fl.getBoundingClientRect(),d0=st[0].querySelector('.fl-dot').getBoundingClientRect(),d3=st[3].querySelector('.fl-dot').getBoundingClientRect();
+if(vert()){tr.style.top=(d0.top-ob.top+10)+'px';tr.style.height=(d3.top-d0.top)+'px';tr.style.left='9px';tr.style.width='4px';tr.style.right='auto'}
+else{tr.style.top='15px';tr.style.height='4px';tr.style.left=(d0.left-ob.left+10)+'px';tr.style.width=(d3.left-d0.left)+'px'}}
+function set(k,anim){geo();var d=[].map.call(st,function(e){return e.querySelector('.fl-dot').getBoundingClientRect()}),total=vert()?(d[3].top-d[0].top):(d[3].left-d[0].left),part=vert()?(d[k].top-d[0].top):(d[k].left-d[0].left),dur=Math.max(.35,k*.35);
+fi.style.transition=anim?((vert()?'height ':'width ')+dur+'s cubic-bezier(.4,.1,.2,1)'):'none';
+if(vert()){fi.style.width='100%';fi.style.height=part+'px'}else{fi.style.height='100%';fi.style.width=part+'px'}
+st.forEach(function(e,i){var f=total?((vert()?(d[i].top-d[0].top):(d[i].left-d[0].left))/total):0,go=k>cur&&anim;
+e.querySelector('.fl-dot').style.transitionDelay=(i<=k&&i>cur&&go?(f*dur)+'s':'0s');
+e.classList.toggle('done',i<k);e.classList.toggle('on',i===k);e.setAttribute('aria-pressed',i===k)});cur=k}
+st.forEach(function(e,i){e.addEventListener('click',function(){set(i,true)});e.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();set(i,true)}})});
+set(0,false);addEventListener('resize',function(){set(cur,false)});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){set(cur,false)});
+setTimeout(function(){set(cur,false)},600)}
+var fq=[].slice.call(document.querySelectorAll('.fq'));
+function openIt(d){var b=d.querySelector('.fq-b');b.style.height='0px';d.open=true;requestAnimationFrame(function(){b.style.height=b.scrollHeight+'px'});b.addEventListener('transitionend',function f(e){if(e.propertyName!=='height')return;b.removeEventListener('transitionend',f);if(d.open)b.style.height='auto'})}
+function closeIt(d){var b=d.querySelector('.fq-b');b.style.height=b.scrollHeight+'px';requestAnimationFrame(function(){requestAnimationFrame(function(){b.style.height='0px'})});b.addEventListener('transitionend',function f(e){if(e.propertyName!=='height')return;b.removeEventListener('transitionend',f);if(b.style.height==='0px')d.open=false})}
+fq.forEach(function(d){var b=d.querySelector('.fq-b');if(d.open)b.style.height='auto';
+d.querySelector('summary').addEventListener('click',function(e){e.preventDefault();var isOpen=d.open&&b.style.height!=='0px';
+if(isOpen){closeIt(d)}else{fq.forEach(function(o){if(o!==d&&o.open)closeIt(o)});openIt(d)}})});
 })();
 </script>
 </body>
