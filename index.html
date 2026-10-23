@@ -284,6 +284,15 @@ a.pn-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(20,20,40,
 .tabs .tab{justify-content:flex-end!important}
 @media(min-width:821px){.tabs{max-width:1040px!important;gap:24px!important;margin-bottom:32px!important}.tabs .tab{aspect-ratio:4/5!important;padding-bottom:30px!important;border-radius:26px!important;font-size:30px!important;box-shadow:7px 7px 0 var(--ink)!important}.tabs .tab small{font-size:15px!important;margin-top:6px!important}.tabs .tab:hover{box-shadow:10px 10px 0 var(--ink)!important}}
 @media(max-width:820px){.tabs{gap:10px!important}.tabs .tab{aspect-ratio:3/4.4!important;font-size:clamp(16px,4.6vw,22px)!important}.tabs .tab small{font-size:11px!important}}
+
+.tabs .tab{align-items:flex-start!important;text-align:left}
+.tabs .tab .tk{font-style:normal;font-size:12px;font-weight:800;letter-spacing:.6px;color:var(--accent);margin-bottom:8px}
+.tabs .tab .td{font-size:14px;font-weight:500;line-height:1.55;opacity:.92;margin-top:8px;word-break:keep-all}
+@media(min-width:821px){.tabs .tab{padding-left:28px!important;padding-right:28px!important}.tabs .tab small{margin-top:14px!important;font-weight:700;color:var(--accent)}}
+@media(max-width:820px){.tabs .tab{padding-left:10px!important;padding-right:6px!important}.tabs .tab .td{display:none}.tabs .tab .tk{font-size:9.5px;letter-spacing:0;margin-bottom:4px;word-break:keep-all}}
+.tabs .tab::after{content:"";position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.6));pointer-events:none}
+.tabs .tab>*{position:relative;z-index:1}.tabs .tab .tk i{font-style:normal}
+@media(max-width:820px){.tabs .tab .tk i{display:none}}
 </style>
 <script src="/nav.js?v=4" defer></script><script src="/footer.js?v=1" defer></script><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"트리플 스피크","url":"https://tntflysepc-cloud.github.io/","inLanguage":"ko"},{"@type":"Organization","name":"트리플 스피크","url":"https://tntflysepc-cloud.github.io/","logo":"https://tntflysepc-cloud.github.io/favicon.png","description":"영어·일본어·중국어 1:1 화상 회화 과외"}]}</script></head>
 <body>
@@ -368,8 +377,8 @@ g.innerHTML=HOME_REVIEWS.map(function(r){return '<div class="pn-card pn-r"><span
 <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=846a8633756033815ae84e92c9c8fb94&libraries=services&autoload=false"></script>
 <script>
 var tabs=document.getElementById('tabs');
-var KEYS=['en','jp','cn'],NAMES=['영어회화','일본어회화','중국어회화'];
-NAMES.forEach(function(k,i){var b=document.createElement('button');b.type='button';b.className='tab ph'+i;b.innerHTML='<b>'+k+'</b><small>자세히 보기 →</small>';b.onclick=function(){location.hash='#/'+KEYS[i]};tabs.appendChild(b)});
+var EY=['ENGLISH<i> · 점수보다 말문</i>','日本語<i> · 첫마디부터</i>','中文<i> · 성조부터</i>'],DS=['토익스피킹·OPIc부터 해외 출장 영어까지, 목표에 맞춰 짜요.','히라가나 단계부터 JLPT 준비, 여행·애니 회화까지.','병음·성조 잡기부터 HSK 급수, 비즈니스 중국어까지.'],KEYS=['en','jp','cn'],NAMES=['영어회화','일본어회화','중국어회화'];
+NAMES.forEach(function(k,i){var b=document.createElement('button');b.type='button';b.className='tab ph'+i;b.innerHTML='<em class="tk">'+EY[i]+'</em><b>'+k+'</b><span class="td">'+DS[i]+'</span><small>자세히 보기 →</small>';b.onclick=function(){location.hash='#/'+KEYS[i]};tabs.appendChild(b)});
 var APPLY_URL='https://script.google.com/macros/s/AKfycbzg6DYJdO_y-EXku9LzTQoD0ROuB5KhfzRP0ufRecUglpUghU0ugQtYnf_XPXhpYlti/exec';
 var $=function(i){return document.getElementById(i)};
 function fe(el,m){var n=el.parentNode.querySelector('.err[data-for="'+el.id+'"]');if(!n){n=document.createElement('small');n.className='err';n.setAttribute('data-for',el.id);n.setAttribute('role','alert');el.insertAdjacentElement('afterend',n)}n.textContent=m||'';n.style.display=m?'block':'none';el.setAttribute('aria-invalid',m?'true':'false');return !m}
