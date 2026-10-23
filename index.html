@@ -334,6 +334,33 @@ a.pn-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(20,20,40,
 .pn-row:hover .pn-no::before{transform:scaleX(1)}
 .pn-row:hover .pn-go{color:var(--c)}
 @media(max-width:820px){.pn-no{padding-top:14px}}
+
+/* 상담 신청 폼 */
+#apply{background:var(--bg2)}
+#apply .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start;max-width:1040px}
+.ap-info{position:sticky;top:96px;padding-top:8px}
+.ap-eb{text-align:left!important;color:var(--brand)!important}
+.ap-h{text-align:left;font-size:clamp(32px,4.4vw,46px);line-height:1.25;letter-spacing:-1.6px;margin:0 0 16px}
+.ap-sub{color:var(--mute);font-size:16px;line-height:1.7;margin:0 0 28px}
+.ap-pts{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.ap-pts li{position:relative;padding-left:32px;font-size:15px;line-height:1.6;color:var(--ink)}
+.ap-pts li::before{content:"";position:absolute;left:0;top:2px;width:20px;height:20px;border-radius:50%;background:var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/20px no-repeat}
+#apply .contact{max-width:none;margin:0;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:36px;box-shadow:0 24px 60px rgba(20,20,40,.09);gap:22px}
+.fg{display:grid;gap:8px;min-width:0}.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.contact .lb{margin:0;font-weight:700;font-size:14px}.contact .lb em{font-style:normal;font-weight:500;color:var(--mute);font-size:12.5px;margin-left:6px}
+#apply .contact input:not([type=checkbox]),#apply .contact select,#apply .contact textarea{background:var(--bg);border:1px solid transparent;border-radius:14px;padding:15px 16px;font-size:15.5px;transition:border-color .2s,box-shadow .2s,background .2s}
+#apply .contact input:focus,#apply .contact select:focus,#apply .contact textarea:focus{outline:0;background:var(--card);border-color:var(--brand);box-shadow:0 0 0 4px color-mix(in srgb,var(--brand) 14%,transparent)}
+.contact .checks{gap:10px}
+.contact .checks span{border:1px solid var(--line)!important;background:var(--bg);padding:11px 22px;font-weight:500;font-size:15px;transition:all .2s}
+.contact .checks label:nth-child(1) input:checked+span{background:#5b3cff;border-color:#5b3cff!important;color:#fff}
+.contact .checks label:nth-child(2) input:checked+span{background:#f0457a;border-color:#f0457a!important;color:#fff}
+.contact .checks label:nth-child(3) input:checked+span{background:#6fb800;border-color:#6fb800!important;color:#fff}
+.contact .checks span:hover{border-color:var(--brand)!important}
+#apply .contact .agree{font-weight:500;margin-top:2px}
+#apply .contact #go{width:100%;background:var(--brand);color:#fff;padding:18px;font-size:17px;border-radius:16px;transition:transform .2s,box-shadow .2s;box-shadow:0 12px 26px color-mix(in srgb,var(--brand) 35%,transparent)}
+#apply .contact #go:hover{transform:translateY(-2px)}
+#apply .contact #go:disabled{opacity:.6}
+@media(max-width:820px){#apply .wrap{grid-template-columns:1fr;gap:28px}.ap-info{position:static}.ap-pts{display:none}.ap-h br{display:none}.ap-sub{margin:0}#apply .contact{padding:24px 20px;border-radius:24px;gap:18px}.row2{grid-template-columns:1fr}}
 </style>
 <script src="/nav.js?v=4" defer></script><script src="/footer.js?v=1" defer></script><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"트리플 스피크","url":"https://tntflysepc-cloud.github.io/","inLanguage":"ko"},{"@type":"Organization","name":"트리플 스피크","url":"https://tntflysepc-cloud.github.io/","logo":"https://tntflysepc-cloud.github.io/favicon.png","description":"영어·일본어·중국어 1:1 화상 회화 과외"}]}</script></head>
 <body>
@@ -384,25 +411,30 @@ g.innerHTML=HOME_REVIEWS.map(function(r){return '<div class="pn-card pn-r"><span
 </script>
 
 <section id="apply"><div class="wrap">
-<h2>지금 상담 신청하기</h2>
-<p class="sub">남겨주신 내용을 확인한 뒤 안내드릴게요</p>
+<div class="ap-info"><p class="pn-eyebrow ap-eb">APPLY</p><h2 class="ap-h">지금 상담<br>신청하기</h2>
+<p class="ap-sub">남겨주신 내용을 확인한 뒤 안내드릴게요.</p>
+<ul class="ap-pts"><li>배우고 싶은 언어와 목표를 알려 주세요</li><li>수준에 맞는 수업 방식과 일정을 안내해 드려요</li><li>화상 수업이 기본, 전화 수업도 가능해요</li></ul></div>
 <div class="contact" id="f">
-<label class="lb" for="n">이름</label>
-<input id="n" placeholder="이름을 입력해 주세요" autocomplete="name">
-<label class="lb" for="p">연락처</label>
-<input id="p" type="tel" placeholder="010-0000-0000" inputmode="numeric" maxlength="13" autocomplete="tel">
-<span class="lb">관심 언어 (중복 선택 가능)</span>
-<div class="checks" id="lgs"><label><input type="checkbox" name="lg" value="영어"><span>영어</span></label><label><input type="checkbox" name="lg" value="일본어"><span>일본어</span></label><label><input type="checkbox" name="lg" value="중국어"><span>중국어</span></label></div>
-<label class="lb" for="g">학습 목적</label>
+<div class="row2"><div class="fg"><label class="lb" for="n">이름</label>
+<input id="n" placeholder="이름을 입력해 주세요" autocomplete="name"></div>
+<div class="fg"><label class="lb" for="p">연락처</label>
+<input id="p" type="tel" placeholder="010-0000-0000" inputmode="numeric" maxlength="13" autocomplete="tel"></div></div>
+<div class="fg"><span class="lb">관심 언어 <em>중복 선택 가능</em></span>
+<div class="checks" id="lgs"><label><input type="checkbox" name="lg" value="영어"><span>영어</span></label><label><input type="checkbox" name="lg" value="일본어"><span>일본어</span></label><label><input type="checkbox" name="lg" value="중국어"><span>중국어</span></label></div></div>
+<div class="fg"><label class="lb" for="g">학습 목적</label>
 <select id="g"><option value="">선택해 주세요</option><option>여행</option><option>취업·이직</option><option>업무·비즈니스</option><option>시험 준비</option><option>유학·이민</option><option>취미·자기계발</option><option>기타</option></select>
-<label class="lb" for="a1">주소</label>
-<select id="sd" autocomplete="address-level1"><option value="">시·도 선택</option><option>서울특별시</option><option>부산광역시</option><option>대구광역시</option><option>인천광역시</option><option>광주광역시</option><option>대전광역시</option><option>울산광역시</option><option>세종특별자치시</option><option>경기도</option><option>강원특별자치도</option><option>충청북도</option><option>충청남도</option><option>전북특별자치도</option><option>전라남도</option><option>경상북도</option><option>경상남도</option><option>제주특별자치도</option></select>
-<input id="a1" placeholder="시·군·구 + 도로명 (예: 강남구 테헤란로 123)" autocomplete="address-line1">
-<input id="a2" placeholder="상세주소 (예: 101동 1203호)" autocomplete="address-line2" aria-label="상세주소">
+</div>
+<div class="row2"><div class="fg"><label class="lb" for="sd">주소 · 시·도</label>
+<select id="sd" autocomplete="address-level1"><option value="">시·도 선택</option><option>서울특별시</option><option>부산광역시</option><option>대구광역시</option><option>인천광역시</option><option>광주광역시</option><option>대전광역시</option><option>울산광역시</option><option>세종특별자치시</option><option>경기도</option><option>강원특별자치도</option><option>충청북도</option><option>충청남도</option><option>전북특별자치도</option><option>전라남도</option><option>경상북도</option><option>경상남도</option><option>제주특별자치도</option></select></div>
+<div class="fg"><label class="lb" for="a1">시·군·구 + 도로명</label>
+<input id="a1" placeholder="예: 강남구 테헤란로 123" autocomplete="address-line1"></div></div>
+
+<div class="fg"><label class="lb" for="a2">상세주소</label>
+<input id="a2" placeholder="예: 101동 1203호" autocomplete="address-line2"></div>
 <small class="amsg" id="amsg" role="status"></small>
 <div class="kmap" id="kmap" hidden></div>
-<label class="lb" for="q2">문의 내용</label>
-<textarea id="q2" rows="4" placeholder="궁금한 점이나 원하는 수업 방식을 자유롭게 적어 주세요"></textarea>
+<div class="fg"><label class="lb" for="q2">문의 내용 <em>선택</em></label>
+<textarea id="q2" rows="3" placeholder="궁금한 점이나 원하는 수업 방식을 자유롭게 적어 주세요"></textarea></div>
 <input type="text" id="hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 <label class="agree" for="cs"><input type="checkbox" id="cs"><span>개인정보 수집·이용에 동의합니다 (필수)</span></label>
 <details class="pv"><summary>수집·이용 내용 보기</summary><p>수집 항목: 이름, 연락처, 관심 언어, 학습 목적, 주소, 문의 내용<br>이용 목적: 상담 및 수업 안내<br>보유 기간: 상담 안내 목적이 끝나면 지체 없이 파기합니다. 동의를 거부할 수 있으며, 거부하면 상담 신청이 어렵습니다.</p></details>
