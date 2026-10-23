@@ -9,9 +9,9 @@ function footer(){
  var contact=[];if(C.phone)contact.push('문의 <b><a href="tel:'+tel+'">'+C.phone+'</a></b>');if(C.kakao)contact.push('<a href="'+C.kakao+'" target="_blank" rel="noopener">카카오톡 상담</a>');
  f.className='sf';
  f.innerHTML='<div class="wrap"><div class="sf-brand"><span class="sf-logo"></span><b>트리플 스피크</b><span>얼굴 보며 말하는 1:1 화상 회화</span></div>'+
- '<div class="sf-nav">'+a('/','홈')+a('/#/en','영어')+a('/#/jp','일본어')+a('/#/cn','중국어')+a('/magazine/','매거진')+a('/reviews/','수업후기')+a('/#apply','상담 신청')+'</div>'+
+ '<div class="sf-nav">'+a('/','홈')+a('/#/en','영어')+a('/#/jp','일본어')+a('/#/cn','중국어')+a('/magazine/','매거진')+a('/#how','수업후기')+a('/#apply','상담 신청')+'</div>'+
  '<div class="sf-h">인기 과정</div><div class="sf-links">'+a('/en/toeic-speaking/','토익스피킹')+a('/en/opic-ih/','오픽(OPIc)')+a('/en/phone/','전화영어')+a('/jp/jlpt-n3/','JLPT 일본어')+a('/cn/hsk-3/','HSK 중국어')+a('/cn/hskk-basic/','HSKK')+'</div>'+
- '<div class="sf-h">함께 보면 좋은 곳</div><div class="sf-links">'+a('/magazine/#en','영어 학습 글')+a('/magazine/#jp','일본어 학습 글')+a('/magazine/#cn','중국어 학습 글')+a('/reviews/','수강생 후기')+'</div>'+
+ '<div class="sf-h">함께 보면 좋은 곳</div><div class="sf-links">'+a('/magazine/#en','영어 학습 글')+a('/magazine/#jp','일본어 학습 글')+a('/magazine/#cn','중국어 학습 글')+a('/#how','수강생 후기')+'</div>'+
  (contact.length?'<div class="sf-line">'+contact.join(' · ')+'</div>':'')+
  '<div class="sf-copy">© 2026 트리플 스피크 · 1:1 화상 영어·일본어·중국어 회화</div></div>';
 }
